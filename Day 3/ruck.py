@@ -50,8 +50,7 @@ def get_me_the_first_answer(path):
         content = infile.readlines()
 
         for line in content:
-            slice1 = slice(0, len(line) // 2)
-            slice2 = slice(len(line) // 2, len(line))
+            slice1, slice2 = slice(0, len(line) // 2), slice(len(line) // 2, len(line))
 
             string1 = line[slice1]
             string2 = line[slice2]
