@@ -3,7 +3,7 @@ def find_start_of_packet(path):
     with open(path) as infile:
         content = infile.read()
 
-        st = [] #signal tracker
+        st = []  # signal tracker
         letters_processed = 0
 
         for letter in content:
@@ -14,16 +14,15 @@ def find_start_of_packet(path):
                 if st[0] not in st[1:4] and st[1] not in st[2:4] and st[2] not in st[0::3]:
                     break
 
-
-
     print(letters_processed, st)
+
 
 def find_start_of_message(path):
 
     with open(path) as infile:
         content = infile.read()
 
-        st = set() #signal tracker
+        st = set()  # signal tracker
         sp = []
         letters_processed = 13
         index = 0
@@ -37,7 +36,7 @@ def find_start_of_message(path):
             for letter in packet:
                 st.add(letter)
                 sp.append(letter)
-            
+
             if len(st) == 14:
                 keep_runnning = False
             else:
@@ -47,11 +46,9 @@ def find_start_of_message(path):
             index += 1
             index2 += 1
 
-
-
     print(letters_processed, st, sp[:-1])
 
 
 if __name__ == "__main__":
-    #find_start_of_packet("signal.txt")
+    # find_start_of_packet("signal.txt")
     find_start_of_message("signal.txt")
